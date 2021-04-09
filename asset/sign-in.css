@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+body {
+  background-color: #292929;
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  font-size: 13px;
+  color: #d6d0cd;
+  text-decoration: none;
+  transition: font-weight 0.05s ease-in;
+}
+
+a:hover {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+a.logo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  text-align: center;
+  color: #d6d0cd;
+  text-decoration: none;
+  border: 1px solid #d6d0cd;
+  padding: 10px 24px;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 8px;
+}
+
+a.logo:hover {
+  border: 1px dashed #946e59;
+  color: #ffffff;
+}
+
+.div-sign-in {
+  margin: 20vh auto;
+  width: 300px;
+  background-color: #292929;
+  border: 2px solid #d4a268;
+  padding: 60px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  color: #d6d0cd;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.form {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.form input {
+  font-size: 14px;
+  padding: 10px 20px 10px 5px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.username,
+.password {
+  display: block;
+  border-radius: 20px;
+  border: 1px solid #d6d0cd;
+  background-color: #d6d0cd;
+  padding: 4px;
+  margin: 10px 20px;
+}
+
+.form svg {
+  height: 25px;
+  margin: 0 5px -6px 10px;
+}
+
+.forgot-password {
+  font-weight: 300;
+  font-size: 14px;
+  color: #d6d0cd;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 0;
+  margin-bottom: 15px;
+}
+
+.button-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.sign-in-btn {
+  font-weight: 500;
+  padding: 15px 40px;
+  border: 1px solid #d6d0cd;
+  border-radius: 25px;
+  background-color: #d6d0cd;
+  transition: all 0.2s ease-in-out;
+}
+
+button.sign-in-btn:hover {
+  background-color: #292929;
+  color: #d6d0cd;
+  cursor: pointer;
+}
+
+.sign-up {
+  margin-top: 15px;
+  text-align: center;
+}
+
+@media (max-width: 440px) {
+  body {
+    overflow: hidden;
+  }
+
+  .div-sign-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .forgot-password {
+    width: auto;
+    justify-content: center;
+  }
+}

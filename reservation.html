@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./asset/reset-style.css" />
+    <link rel="stylesheet" href="./asset/footer.css" />
+    <link rel="stylesheet" href="./asset/reservation.css" />
+    <title>THE RESTAURANT</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrap" >
+          <input type="checkbox" class="toogle">
+        <div class="hamburger">
+          <div class="burger-lines"></div>
+        </div>
+        <div class="logo-container">
+          <a href="./index.html" class="logo"">THE RESTAURANT</a>
+        </div>
+        <div class="hamburger-nav">
+        <div>
+        <div>
+        <ul class="nav-links">
+          <li><a href="./menu.html">Menu</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./sign-in.html" id="reservation_link">Reserve</a></li>
+          <li><a href="./sign-in.html">Delivery</a></li>
+        </ul>
+        <a href="./sign-in.html"><button class="login" id="login-button">Login</button></a>
+        </div>
+      </div>  
+    </div>
+      </div>
+      </nav>
+    </header>
+    <main>
+      <div class="reservation_title">
+        <u>TABLE</u> RESERVATION 
+      </div>
+      <div class="insides">
+        <div class="grid-container">
+            <!-- first row -->
+            <div class="grid-items">
+              <input type="radio" name="table" id="1" onclick="return_id(this.id)">
+              <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="2" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="3" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="4" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grey">
+                <div class="grey-block"></div>
+            </div>
+
+            <!-- second row -->
+            <div class="grid-items">
+                <input type="radio" name="table" id="5" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="6" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="7" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="8" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grey-box"></div>
+
+           <!-- third row -->
+            <div class="grid-items">
+                <input type="radio" name="table" id="9" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="10" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="11" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="12" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="black-box">
+                <div></div>
+            </div>
+
+            <!-- fourth row -->
+            <div class="grid-items-empty">
+            </div>
+            <div class="grid-items-empty">
+            </div>
+            <div class="grid-items-empty">
+            </div>
+            <div class="grid-items-empty">
+            </div>
+            <div class="empty-box"></div>
+
+            <!-- fifth row -->
+            <div class="grid-items">
+                <input type="radio" name="table" id="13" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="14" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="15" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="grid-items">
+                <input type="radio" name="table" id="16" onclick="return_id(this.id)">
+                <img src="./images/tablenchair.svg" alt="table_and_chair" id="table_and_chair">
+                <img src="./images/tablenchair_hover.svg" alt="table_and_chair" id="table_and_chair_hover">
+            </div>
+            <div class="black-box2">
+                <div></div>
+            </div>
+        </div>
+  
+        <div class="rights">
+          <div class="rights-top" id="rights_top">
+            <p>Please select a table first, <br>thank you!</p>
+          </div>
+          <form action="submit" class="reservation-form">
+            <div class="wrapping-top-div">
+          <div class="details-title">
+            DETAILS
+          </div>
+          <div class="table-number" id="tablenumber_id">
+            Table ... 
+          </div>
+          </div>
+          <div class="guest-name">
+            <div class="guest-name-title">Guest name : </div>
+            <div class="guest-name-input">
+              <input type="text" name="guest-name" id="name_guest"
+              placeholder="e.g. Smith" required>
+            </div>
+          </div>
+          <div class="pax-num">
+            <div class="pax-num-title">Number of pax : </div>
+            <div class="pax-num-input"><input type="text" name="number-of-people" id="number_pax" maxlength="2"
+              onkeypress="return numberonly(event)"
+              placeholder="e.g. 2 or more" required></div>
+          </div>
+          <div class="guest-phone">
+            <div class="guest-phone-title">Phone number : </div>
+            <div class="guest-phone-input">
+              <input type="text" name="phone-number" id="phone_guest" 
+              onkeypress="return numberonly(event)" maxlength="15"
+              placeholder="e.g. +62 123 4567 6789" required></div>
+          </div>
+          <div class="guest-email">
+            <div class="guest-email-title">Email : </div>
+            <div class="guest-email-input">
+              <input type="text" name="guest-email" id="email_guest"
+              placeholder="e.g. smith@something.com" required>
+            </div>
+            <div id="guestEmailErrorWrap">
+              <div class="guest-email-error-top"></div>
+              <div class="guest-email-error">
+              Invalid email
+              </div>
+            </div>
+          </div>
+          <div class="guest-date">
+            <div class="guest-date-title">Reservation date : </div>
+            <div class="guest-date-input">
+              <input type="date" name="guest-date" id="date_guest" required>
+              <input type="time" name="guest-time" id="time_guest" min='10:00' max='20:00' required >
+            </div>
+            <div id="guestDateErrorWrap">
+              <div class="guest-date-error-top"></div>
+              <div class="guest-date-error">
+                Date cannot be before today
+              </div>
+            </div>
+          </div>
+          <div class="reserve-button">
+            <button type="submit" id="reserve_button">Book my <u>TABLE</u></button>
+          </div>
+        </form>
+        </div>
+        </div>
+        <div class="detailed-information">
+            <p>*The seats in the layout presents actual position of each table, 
+              the number of chairs however will be adjusted to the number of person </p>
+              <p>**Number of pax over 2 would be considered as family</p>
+          </div>
+    </main>
+    <footer>
+      <div class="footer-left">
+      <div class="footer-copyright-text">&#169; 2021 THE RESTAURANT </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-email">
+        <!-- Icons url = http://svgicons.sparkk.fr/ -->
+        <svg class="svg-icon" viewBox="0 0 20 20">
+          <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
+        </svg>
+        <p class="footer-email-text">
+        the-restaurant@abcd.com
+      </p></div>
+      <div class="footer-contact">
+        <!-- Icons url = http://svgicons.sparkk.fr/ -->
+        <svg class="svg-icon" viewBox="0 0 20 20">
+          <path d="M13.372,1.781H6.628c-0.696,0-1.265,0.569-1.265,1.265v13.91c0,0.695,0.569,1.265,1.265,1.265h6.744c0.695,0,1.265-0.569,1.265-1.265V3.045C14.637,2.35,14.067,1.781,13.372,1.781 M13.794,16.955c0,0.228-0.194,0.421-0.422,0.421H6.628c-0.228,0-0.421-0.193-0.421-0.421v-0.843h7.587V16.955z M13.794,15.269H6.207V4.731h7.587V15.269z M13.794,3.888H6.207V3.045c0-0.228,0.194-0.421,0.421-0.421h6.744c0.228,0,0.422,0.194,0.422,0.421V3.888z"></path>
+        </svg>
+        <p class="footer-contact-number">
+        +62 494 3232 5555</p>
+      </div>
+      <div class="footer-address">
+        <!-- Icons url = http://svgicons.sparkk.fr/ -->
+        <svg class="svg-icon" viewBox="0 0 20 20">
+          <path d="M10,1.375c-3.17,0-5.75,2.548-5.75,5.682c0,6.685,5.259,11.276,5.483,11.469c0.152,0.132,0.382,0.132,0.534,0c0.224-0.193,5.481-4.784,5.483-11.469C15.75,3.923,13.171,1.375,10,1.375 M10,17.653c-1.064-1.024-4.929-5.127-4.929-10.596c0-2.68,2.212-4.861,4.929-4.861s4.929,2.181,4.929,4.861C14.927,12.518,11.063,16.627,10,17.653 M10,3.839c-1.815,0-3.286,1.47-3.286,3.286s1.47,3.286,3.286,3.286s3.286-1.47,3.286-3.286S11.815,3.839,10,3.839 M10,9.589c-1.359,0-2.464-1.105-2.464-2.464S8.641,4.661,10,4.661s2.464,1.105,2.464,2.464S11.359,9.589,10,9.589"></path>
+        </svg>
+        <p class="footer-address-text">
+          The Street, The City <br>
+          The Region, TC 14055 ID
+        </p>
+      </div>
+    </div>
+    </footer>
+    <script src="./app/reservation.js"></script>
+    <script src="./app/get-user.js"></script>
+  </body>
+</html>

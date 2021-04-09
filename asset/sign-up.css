@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+body {
+  background-color: #292929;
+  color: #d6d0cd;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+a {
+  color: #d6d0cd;
+  text-decoration: none;
+}
+
+.div-register {
+  margin: 20vh auto;
+  width: 450px;
+  align-items: center;
+  box-sizing: inherit;
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  padding: 60px 40px;
+  background-color: #292929;
+  border: 2px solid #d4a268;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.registration-form {
+  width: 100%;
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  text-align: center;
+  color: #d6d0cd;
+  border: 1px solid #d6d0cd;
+  padding: 10px 20px;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 15px;
+}
+
+.logo:hover {
+  border: 1px dashed #946e59;
+  color: #ffffff;
+  cursor: default;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  color: #d6d0cd;
+  margin-bottom: 5px;
+}
+
+.registration-form input {
+  font-family: "Montserrat", sans-serif;
+  color: #292929;
+  background-color: #d6d0cd;
+  padding: 11px 13px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.first-name,
+.last-name,
+.password,
+.confirm-password {
+  width: 100%;
+}
+
+.first-name,
+.password {
+  margin-right: 10px;
+}
+
+.name-form,
+.password-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#firstname:hover {
+  border: 1px solid #946e59;
+}
+
+#lastname:hover {
+  border: 1px solid #946e59;
+}
+.email {
+  display: block;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.input {
+  width: 100%;
+  height: 100%;
+}
+
+#name-error-message {
+  color: #ff6961;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: none;
+}
+
+#email-error-message {
+  color: #ff6961;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  display: none;
+  font-size: 10px;
+}
+
+#password-error-message {
+  color: #ff6961;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  display: none;
+  font-size: 10px;
+}
+
+.password-form {
+  margin-bottom: 2px;
+}
+
+.password-instruction {
+  margin-top: 4px;
+  font-weight: 300;
+  font-size: 11px;
+}
+
+.phone-number {
+  margin-top: 4px;
+}
+
+.inner-form {
+  padding-bottom: 40px;
+}
+
+.others {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.sign-in-instead {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#exc-logo {
+  width: 10px;
+  margin-right: 3px;
+}
+
+#create-acc-btn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  padding: 12px 34px;
+  border: 1px solid #d6d0cd;
+  border-radius: 25px;
+  background-color: #d6d0cd;
+  transition: all 0.2s ease-in-out;
+}
+
+#create-acc-btn:hover {
+  background-color: #292929;
+  color: #d6d0cd;
+  cursor: pointer;
+}
+
+@media (max-width: 610px) {
+  div * {
+    box-sizing: border-box;
+  }
+
+  .div-register {
+    margin: 20vh 10px;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    padding: 40px 20px;
+    background-color: #292929;
+    border: 2px solid #d4a268;
+  }
+
+  .registration-form {
+    width: 100%;
+  }
+
+  .name-form,
+  .password-form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+  }
+
+  input#email {
+    width: 100%;
+    height: 100%;
+  }
+
+  .first-name,
+  .last-name,
+  .email,
+  .password,
+  .confirm-password,
+  .phone-number {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .confirm-password,
+  .password-form {
+    margin-bottom: 2px;
+  }
+}
+
+@media (max-width: 450px) {
+  .div-register {
+    margin: auto;
+    border: none;
+  }
+}

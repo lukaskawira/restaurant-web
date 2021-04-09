@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./asset/reset-style.css" />
+    <link rel="stylesheet" href="./asset/sign-up.css" />
+    <title>Registration - THE RESTAURANT</title>
+  </head>
+  <body>
+    <div class="div-register">
+      <div class="logo"><a href="./index.html"> THE RESTAURANT</a></div>
+
+      <div class="title">Create your MEMBERSHIP account</div>
+
+      <form class="registration-form" id="registration_form">
+        <div class="inner-form">
+          <div class="name-form">
+            <div class="first-name">
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="First name"
+              />
+            </div>
+
+            <div class="last-name">
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                placeholder="Last name"
+              />
+            </div>
+          </div>
+          <div id="name-error-message">Enter first and last names</div>
+
+          <div class="email">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email Address"
+            />
+          </div>
+          <div id="email-error-message">Invalid email format</div>
+
+          <div class="password-form">
+            <div class="password">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+              />
+            </div>
+
+            <div class="confirm-password">
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirm-password"
+                placeholder="Confirm password"
+              />
+            </div>
+          </div>
+          <div id="password-error-message">
+            The password(s) didn't match. Try again.
+          </div>
+          <div class="password-instruction">
+            <img
+              id="exc-logo"
+              src="./images/exc_logo.svg"
+              alt="exclamation mark logo"
+            />Use 8 or more letters for password
+          </div>
+          <div class="phone-number">
+            <input
+              type="text"
+              name="input-phone-number"
+              id="input-phone-number"
+              placeholder="Eg. 62 000 0000 0000"
+              onkeypress="return numberonly(event)"
+              maxlength="15"
+            />
+          </div>
+        </div>
+
+        <div class="others">
+          <div class="sign-in-instead">
+            <a href="./sign-in.html" class="sign-in-instead">
+              Sign in instead</a
+            >
+          </div>
+          <button type="submit" id="create-acc-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+    <script src="./app/sign-up.js"></script>
+  </body>
+</html>

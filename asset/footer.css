@@ -1,0 +1,75 @@
+/* THIS SECTION OF CODE IS FROM http://svgicons.sparkk.fr/ */
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #d6d0cd; /* I change the default color from blue to white */
+}
+
+.svg-icon circle {
+  stroke: #d6d0cd; /* I change the default color from blue to white */
+  stroke-width: 1;
+}
+
+/* THIS SECTION OF CODE IS FROM http://svgicons.sparkk.fr/ */
+
+footer {
+  height: 8vh;
+  background-color: #292929;
+  border-top: 1px solid #946e59;
+  font-family: "Montserrat", sans-serif;
+  color: #d6d0cd;
+  padding: 30px 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  width: -webkit-fill-available;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer-copyright-text {
+  font-weight: 700;
+}
+
+.footer-email,
+.footer-contact,
+.footer-address {
+  display: flex;
+}
+
+.footer-email .svg-icon,
+.footer-contact .svg-icon,
+.footer-address .svg-icon {
+  margin-right: 5px;
+}
+
+@media (max-width: 800px) {
+  footer {
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  footer div {
+    margin-bottom: 5px;
+  }
+
+  .footer-email,
+  .footer-contact,
+  .footer-address {
+    justify-content: center;
+  }
+
+  .footer-copyright-text {
+    text-align: center;
+    margin-top: 3px;
+  }
+}
