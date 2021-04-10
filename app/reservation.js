@@ -1,9 +1,19 @@
+let checkBox = document.querySelector(".toogle");
+
+checkBox.addEventListener("change", function (e) {
+  if (this.checked) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+});
+
 function numberonly(event) {
   var num = event.which ? event.which : event.keyCode;
   if (num > 31 && (num < 48 || num > 57)) return false;
   return true;
 }
-
+w;
 function validateEmail(i) {
   if (
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
