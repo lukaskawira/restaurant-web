@@ -193,18 +193,18 @@ main {
 }
 
 #table_and_chair {
-  width: 95px;
+  width: 90px;
 }
 
 #table_and_chair_hover {
-  width: 92px;
+  width: 88px;
   display: none;
 }
 
 input[type="radio"] {
   position: absolute;
-  width: 95px;
-  height: 45px;
+  width: 90px;
+  height: 42px;
   cursor: pointer;
   opacity: 0;
 }
@@ -611,5 +611,13 @@ input[type="radio"]:checked ~ #table_and_chair_hover {
     border-left: 7px double #333333;
     border-top: 5px solid #333333;
     border-right: 40px solid #333333;
+  }
+
+  #table_and_chair {
+    width: 70px;
+  }
+
+  #table_and_chair_hover {
+    width: 68px;
   }
 }
