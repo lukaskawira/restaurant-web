@@ -79,7 +79,7 @@ button.login {
 }
 
 .nav-links,
-.hamburger-nav > div > div {
+.hamburger-nav>div>div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,7 +239,7 @@ footer {
 
   /* Hamburger menu */
   .hamburger-nav,
-  .hamburger-nav > div {
+  .hamburger-nav>div {
     display: none;
   }
 
@@ -293,19 +293,19 @@ footer {
     top: 5px;
   }
 
-  .nav-wrap .toogle:checked + .hamburger .burger-lines::before {
+  .nav-wrap .toogle:checked+.hamburger .burger-lines::before {
     top: 0;
     transform-origin: center;
     transform: rotate(35deg);
   }
 
-  .nav-wrap .toogle:checked + .hamburger .burger-lines::after {
+  .nav-wrap .toogle:checked+.hamburger .burger-lines::after {
     top: 0;
     transform-origin: center;
     transform: rotate(-35deg);
   }
 
-  .nav-wrap .toogle:checked:hover + .burger-lines {
+  .nav-wrap .toogle:checked:hover+.burger-lines {
     transform: rotate(225deg);
   }
 
@@ -322,7 +322,7 @@ footer {
     justify-content: center;
   }
 
-  .nav-wrap .hamburger-nav > div {
+  .nav-wrap .hamburger-nav>div {
     background: #292929;
     border-radius: 50%;
     width: 200vh;
@@ -335,18 +335,18 @@ footer {
     transition: all 0.4s ease;
   }
 
-  .nav-wrap .hamburger-nav > div > div,
+  .nav-wrap .hamburger-nav>div>div,
   .nav-links {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
   }
 
-  .nav-links > li {
+  .nav-links>li {
     margin-bottom: 40px;
   }
 
-  .nav-links > li > a {
+  .nav-links>li>a {
     font-size: 25px;
     font-weight: 600;
   }
@@ -362,10 +362,11 @@ footer {
     margin-top: 0;
   }
 
-  .nav-wrap .toogle:checked ~ .hamburger-nav {
+  .nav-wrap .toogle:checked~.hamburger-nav {
     visibility: visible;
   }
-  .nav-wrap .toogle:checked ~ .hamburger-nav > div {
+
+  .nav-wrap .toogle:checked~.hamburger-nav>div {
     transform: scale(1);
     transition-duration: 0.4s;
   }
@@ -375,12 +376,15 @@ footer {
     padding-left: 45px;
     padding-right: 45px;
   }
+
   .menu-grid {
     flex-direction: column;
   }
+
   .left {
     justify-content: space-between;
   }
+
   .right {
     margin-top: 15px;
     justify-content: space-between;
