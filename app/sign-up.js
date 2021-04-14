@@ -57,7 +57,7 @@ sendBtn.addEventListener("click", (e) => {
 
         // Make JSON
         var objJSON = JSON.stringify(obj, null, 2);
-        console.log(objJSON);
+        console.log("this file");
       }
     }
   } catch (err) {
