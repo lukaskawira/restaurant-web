@@ -66,6 +66,8 @@ function setCalendar() {
 
 setCalendar();
 
+var data = "";
+
 reserveBtn.addEventListener("click", (e) => {
   try {
     let gname = document.getElementById("name_guest").value;
@@ -94,11 +96,10 @@ reserveBtn.addEventListener("click", (e) => {
       };
 
       // Make JSON
-      var objJSON = JSON.stringify(obj, null, 2);
-      console.log(objJSON);
+      data = JSON.stringify(obj, null, 2);
+      console.log(data);
     }
   } catch (err) {
     console.error(err);
   }
 });
- 
