@@ -42,8 +42,6 @@ sendBtn.addEventListener("click", (e) => {
     var cpassword = document.getElementById("confirm-password").value;
     var phonenumber = document.getElementById("input-phone-number").value;
 
-    const timestamp = new Date(Date.now());
-
     if (validateEmail(email)) {
       if (confirmPassword(password, cpassword)) {
         var obj = {
@@ -52,12 +50,29 @@ sendBtn.addEventListener("click", (e) => {
           Password: password,
           Email: email,
           PhoneNumber: phonenumber,
-          DateCreated: timestamp.toUTCString(),
         };
 
         // Make JSON
-        var objJSON = JSON.stringify(obj, null, 2);
-        console.log("this file");
+        var data = JSON.stringify(obj, null, 2);
+
+        //Posting to local server
+        var xh = new XMLHttpRequest();
+        var url_query = "http://localhost:8080/v1/cus";
+
+        xh.open("POST", url_query, true);
+        xh.setRequestHeader("Content-type", "application/json");
+        xh.send(data);
+
+        xh.onreadystatechange = function () {
+          if (this.readyState === 4) {
+            if (this.status === 200) {
+              window.location.href = "index.html";
+              alert("Registration Successful!");
+            } else {
+              alert(this.responseText);
+            }
+          }
+        };
       }
     }
   } catch (err) {
