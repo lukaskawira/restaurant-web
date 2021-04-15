@@ -58,5 +58,3 @@ if (login != null) {
     logOut();
   });
 }
-
-//localhost:8080/v1/cus/logout/:cid

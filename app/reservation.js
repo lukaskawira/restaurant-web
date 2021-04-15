@@ -68,6 +68,7 @@ setCalendar();
 
 var data = "";
 
+//Initialize http connection
 var xh = new XMLHttpRequest();
 
 reserveBtn.addEventListener("click", (e) => {
@@ -128,3 +129,36 @@ reserveBtn.addEventListener("click", (e) => {
     console.error(err);
   }
 });
+
+//Get current customer reservation, if customer already have a
+//reservation, the customer must cancel the current reservation
+//and proceed with the new reservation
+var current = localStorage.getItem("isLogin");
+
+//Get reservation id if any
+let currentReservationID = localStorage.setItem("currentReservationID", null);
+let temp = "";
+
+if (current != "") {
+  var url_query = "http://localhost:8080/v1/res/gcust/" + current;
+  xh.open("GET", url_query, true);
+  xh.setRequestHeader("Content-type", "application/json");
+  xh.send();
+
+  xh.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        temp = JSON.parse(this.response);
+        if (temp.CustomerID == current) {
+          console.log(temp);
+          window.location.href = "reservation-details.html";
+        } else {
+          console.log("Data Mismatch");
+        }
+      }
+    }
+  };
+} else {
+  alert("Please log in first!");
+  window.location.href = "index.html";
+}
