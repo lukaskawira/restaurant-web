@@ -54,6 +54,7 @@ sendBtn.addEventListener("click", (e) => {
 
         // Make JSON
         var data = JSON.stringify(obj, null, 2);
+        console.log(data);
 
         //Posting to local server
         var xh = new XMLHttpRequest();
@@ -66,7 +67,7 @@ sendBtn.addEventListener("click", (e) => {
         xh.onreadystatechange = function () {
           if (this.readyState === 4) {
             if (this.status === 200) {
-              window.location.href = "index.html";
+              window.location.href = "sign-in.html";
               alert("Registration Successful!");
             } else {
               alert(this.responseText);

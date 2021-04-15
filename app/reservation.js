@@ -13,7 +13,7 @@ function numberonly(event) {
   if (num > 31 && (num < 48 || num > 57)) return false;
   return true;
 }
-w;
+
 function validateEmail(i) {
   if (
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
@@ -68,7 +68,11 @@ setCalendar();
 
 var data = "";
 
+var xh = new XMLHttpRequest();
+
 reserveBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
   try {
     let gname = document.getElementById("name_guest").value;
     let pax = document.getElementById("number_pax").value;
@@ -76,6 +80,8 @@ reserveBtn.addEventListener("click", (e) => {
     let email = document.getElementById("email_guest").value;
     let resDate = document.getElementById("date_guest").value;
     let resTime = document.getElementById("time_guest").value;
+
+    let cusid = login;
 
     if (
       gname != "" &&
@@ -86,6 +92,7 @@ reserveBtn.addEventListener("click", (e) => {
       resTime != ""
     ) {
       var obj = {
+        CustomerID: cusid,
         GuestName: gname,
         NumberOfPeople: pax,
         PhoneNumber: phone,
@@ -98,6 +105,24 @@ reserveBtn.addEventListener("click", (e) => {
       // Make JSON
       data = JSON.stringify(obj, null, 2);
       console.log(data);
+
+      //Posting to local server
+      var url_query = "http://localhost:8080/v1/res";
+
+      xh.open("POST", url_query, true);
+      xh.setRequestHeader("Content-type", "application/json");
+      xh.send(data);
+
+      xh.onreadystatechange = function () {
+        if (this.readyState === 4) {
+          if (this.status === 200) {
+            alert("Reservation Successfully Added!");
+            window.location.href = "reservation-details.html";
+          } else {
+            alert(this.responseText);
+          }
+        }
+      };
     }
   } catch (err) {
     console.error(err);

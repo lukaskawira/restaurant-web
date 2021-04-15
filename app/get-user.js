@@ -20,6 +20,29 @@ function getActiveUser(login) {
 }
 
 function logOut() {
+  var u = login;
+
+  try {
+    //Posting to local server
+    var xh = new XMLHttpRequest();
+    var url_query = "http://localhost:8080/v1/cus/logout/" + u;
+
+    xh.open("POST", url_query, true);
+    xh.setRequestHeader("Content-type", "application/json");
+    xh.send();
+
+    xh.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        if (this.status === 200) {
+          window.location.href = "sign-in.html";
+        } else {
+          alert(this.responseText);
+        }
+      }
+    };
+  } catch (err) {
+    console.log(err);
+  }
   localStorage.clear();
 }
 
@@ -35,3 +58,5 @@ if (login != null) {
     logOut();
   });
 }
+
+//localhost:8080/v1/cus/logout/:cid
