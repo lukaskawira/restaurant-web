@@ -30,16 +30,31 @@ sendBtn.addEventListener("click", (e) => {
 
     if (validateEmail(email)) {
       var obj = {
-        FirstName: firstname,
-        LastName: lastname,
+        Firstname: firstname,
+        Lastname: lastname,
         Email: email,
-        PhoneNumber: phonenumber,
+        Phonenumber: phonenumber,
         Message: msg,
       };
 
       // Make JSON
-      var objJSON = JSON.stringify(obj, null, 2);
-      console.log(objJSON);
+      var data = JSON.stringify(obj, null, 2);
+      var xh = new XMLHttpRequest();
+      var url_query = "http://localhost:8080/v1/con/";
+
+      xh.open("POST", url_query, true);
+      xh.setRequestHeader("Content-type", "application/json");
+      xh.send(data);
+
+      xh.onreadystatechange = function () {
+        if (this.readyState === 4) {
+          if (this.status === 200) {
+            console.log(this.response);
+          } else {
+            console.log(this.response);
+          }
+        }
+      };
     }
   } catch (err) {
     console.error(err);
