@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="date" / id="datepicker">
+    <select name="time" id="timepicker">
+      <option value="10">10:00 AM</option>
+      <option value="11">11:00 AM</option>
+      <option value="12">12:00 PM</option>
+      <option value="13">01:00 PM</option>
+      <option value="14">02:00 PM</option>
+      <option value="15">03:00 PM</option>
+      <option value="16">04:00 PM</option>
+      <option value="17">05:00 PM</option>
+      <option value="18">06:00 PM</option>
+      <option value="19">07:00 PM</option>
+      <option value="20">08:00 PM</option>
+      <option value="21">09:00 PM</option>
+    </select>
+  </body>
+  <script>
+    var tnum = "5";
+    var utime = document.querySelector("#timepicker");
+    var udate = document.querySelector("#datepicker");
+    var tableid = "";
+    var timeval = "";
+    utime.addEventListener("change", (e) => {
+      timeval = utime.value;
+      tableid = tnum + timeval;
+      console.log(udate.value == "2021-04-28");
+    });
+  </script>
+</html>

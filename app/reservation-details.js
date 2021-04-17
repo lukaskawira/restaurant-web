@@ -8,7 +8,7 @@ checkBox.addEventListener("change", function (e) {
   }
 });
 
-let current = localStorage.getItem("isLogin");
+let current = login;
 
 var xh = new XMLHttpRequest();
 let cr = "";

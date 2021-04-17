@@ -68,9 +68,6 @@ setCalendar();
 
 var data = "";
 
-//Initialize http connection
-var xh = new XMLHttpRequest();
-
 reserveBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -107,6 +104,9 @@ reserveBtn.addEventListener("click", (e) => {
       data = JSON.stringify(obj, null, 2);
       console.log(data);
 
+      //Initialize http connection
+      var xh = new XMLHttpRequest();
+
       //Posting to local server
       var url_query = "http://localhost:8080/v1/res";
 
@@ -137,9 +137,13 @@ var current = localStorage.getItem("isLogin");
 
 //Get reservation id if any
 let currentReservationID = localStorage.setItem("currentReservationID", null);
-let temp = "";
 
+//If login is not empty
 if (current != "") {
+  //Initialize http connection
+  var xh = new XMLHttpRequest();
+
+  //First check if the current customer have reservation on hold
   var url_query = "http://localhost:8080/v1/res/gcust/" + current;
   xh.open("GET", url_query, true);
   xh.setRequestHeader("Content-type", "application/json");
@@ -148,17 +152,45 @@ if (current != "") {
   xh.onreadystatechange = function () {
     if (this.readyState === 4) {
       if (this.status === 200) {
-        temp = JSON.parse(this.response);
-        if (temp.CustomerID == current) {
-          console.log(temp);
+        var holder = JSON.parse(this.response);
+        if (holder.CustomerID == current) {
+          console.log(holder);
           window.location.href = "reservation-details.html";
         } else {
-          console.log("Data Mismatch");
+          console.error("Oops, something went wrong.");
         }
       }
     }
   };
+  getFormValue();
 } else {
   alert("Please log in first!");
   window.location.href = "index.html";
+}
+
+function getFormValue() {
+  var xh = new XMLHttpRequest();
+  var url_query = "http://localhost:8080/v1/cus/" + current;
+
+  xh.open("GET", url_query, true);
+  xh.setRequestHeader("Content-type", "application/json");
+  xh.send();
+
+  xh.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        var holder = JSON.parse(this.response);
+        if (holder != "") {
+          //Else customer doesn't have any reservation on hold,
+          //get and fill the inner html with customer data
+          //Get data from server with reference to customer id and get customer information
+          document.querySelector("#name_guest").value = holder.Firstname;
+          document.querySelector("#phone_guest").value = holder.Phonenumber;
+          document.querySelector("#email_guest").value = holder.Email;
+        } else {
+          console.error("Oops, something went wrong. [GET CUSTOMER DATA]");
+        }
+      }
+    }
+  };
 }

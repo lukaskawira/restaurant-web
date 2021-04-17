@@ -1,5 +1,4 @@
 /* Get current active user */
-
 let login = localStorage.getItem("isLogin");
 let loginBtn = document.getElementById("login-button");
 
@@ -19,6 +18,19 @@ function getActiveUser(login) {
   });
 }
 
+if (login != null) {
+  //Change the links inner target
+  var reservationLink = document.getElementById("reservation_link");
+  reservationLink.href = "./reservation.html";
+
+  //get current active user
+  getActiveUser(login);
+
+  loginBtn.addEventListener("click", (e) => {
+    logOut();
+  });
+}
+
 function logOut() {
   var u = login;
 
@@ -35,6 +47,7 @@ function logOut() {
       if (this.readyState === 4) {
         if (this.status === 200) {
           window.location.href = "sign-in.html";
+          localStorage.clear();
         } else {
           alert(this.responseText);
         }
@@ -43,18 +56,4 @@ function logOut() {
   } catch (err) {
     console.log(err);
   }
-  localStorage.clear();
-}
-
-if (login != null) {
-  //Change the links inner target
-  var reservationLink = document.getElementById("reservation_link");
-  reservationLink.href = "./reservation.html";
-
-  //get current active user
-  getActiveUser(login);
-
-  loginBtn.addEventListener("click", (e) => {
-    logOut();
-  });
 }
