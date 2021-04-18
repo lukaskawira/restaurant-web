@@ -44,8 +44,6 @@ function return_id(id) {
   }
 }
 
-let reserveBtn = document.getElementById("reserve_button");
-
 function setCalendar() {
   var today = new Date();
 
@@ -68,16 +66,88 @@ setCalendar();
 
 var data = "";
 
+//Get current customer reservation, if customer already have a
+//reservation, the customer must cancel the current reservation
+//and proceed with the new reservation
+var current = localStorage.getItem("isLogin");
+
+//Get reservation id if any
+let currentReservationID = localStorage.setItem("currentReservationID", null);
+var holder = "";
+
+//If login is not empty
+function checkLogin() {
+  if (current != "") {
+    //Initialize http connection
+    var xh = new XMLHttpRequest();
+
+    //First check if the current customer have reservation on hold
+    var url_query = "http://localhost:8080/v1/res/gcust/" + current;
+    xh.open("POST", url_query, true);
+    xh.setRequestHeader("Content-type", "application/json");
+    xh.send();
+
+    xh.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        if (this.status === 200) {
+          holder = JSON.parse(this.response);
+          if (holder.CustomerID == current) {
+            window.location.href = "reservation-details.html";
+          } else {
+            console.error("Oops, something went wrong.");
+          }
+        }
+      }
+    };
+    getFormValue();
+  } else {
+    alert("Please log in first!");
+    window.location.href = "index.html";
+  }
+}
+
+checkLogin();
+let reserveBtn = document.getElementById("reserve_button");
 reserveBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  InsertReservation();
+});
 
+function getFormValue() {
+  var xh = new XMLHttpRequest();
+  var url_query = "http://localhost:8080/v1/cus/" + current;
+
+  xh.open("GET", url_query, true);
+  xh.setRequestHeader("Content-type", "application/json");
+  xh.send();
+
+  xh.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        var holder = JSON.parse(this.response);
+        if (holder != "") {
+          //Else customer doesn't have any reservation on hold,
+          //get and fill the inner html with customer data
+          //Get data from server with reference to customer id and get customer information
+          document.querySelector("#name_guest").value = holder.Firstname;
+          document.querySelector("#phone_guest").value = holder.Phonenumber;
+          document.querySelector("#email_guest").value = holder.Email;
+        } else {
+          console.error("Oops, something went wrong. [GET CUSTOMER DATA]");
+        }
+      }
+    }
+  };
+}
+
+function InsertReservation() {
   try {
     let gname = document.getElementById("name_guest").value;
     let pax = document.getElementById("number_pax").value;
     let phone = document.getElementById("phone_guest").value;
     let email = document.getElementById("email_guest").value;
     let resDate = document.getElementById("date_guest").value;
-    let resTime = document.getElementById("time_guest").value;
+    let resTime = document.getElementById("timepicker").value;
 
     let cusid = login;
 
@@ -128,69 +198,4 @@ reserveBtn.addEventListener("click", (e) => {
   } catch (err) {
     console.error(err);
   }
-});
-
-//Get current customer reservation, if customer already have a
-//reservation, the customer must cancel the current reservation
-//and proceed with the new reservation
-var current = localStorage.getItem("isLogin");
-
-//Get reservation id if any
-let currentReservationID = localStorage.setItem("currentReservationID", null);
-
-//If login is not empty
-if (current != "") {
-  //Initialize http connection
-  var xh = new XMLHttpRequest();
-
-  //First check if the current customer have reservation on hold
-  var url_query = "http://localhost:8080/v1/res/gcust/" + current;
-  xh.open("GET", url_query, true);
-  xh.setRequestHeader("Content-type", "application/json");
-  xh.send();
-
-  xh.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        var holder = JSON.parse(this.response);
-        if (holder.CustomerID == current) {
-          console.log(holder);
-          window.location.href = "reservation-details.html";
-        } else {
-          console.error("Oops, something went wrong.");
-        }
-      }
-    }
-  };
-  getFormValue();
-} else {
-  alert("Please log in first!");
-  window.location.href = "index.html";
-}
-
-function getFormValue() {
-  var xh = new XMLHttpRequest();
-  var url_query = "http://localhost:8080/v1/cus/" + current;
-
-  xh.open("GET", url_query, true);
-  xh.setRequestHeader("Content-type", "application/json");
-  xh.send();
-
-  xh.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        var holder = JSON.parse(this.response);
-        if (holder != "") {
-          //Else customer doesn't have any reservation on hold,
-          //get and fill the inner html with customer data
-          //Get data from server with reference to customer id and get customer information
-          document.querySelector("#name_guest").value = holder.Firstname;
-          document.querySelector("#phone_guest").value = holder.Phonenumber;
-          document.querySelector("#email_guest").value = holder.Email;
-        } else {
-          console.error("Oops, something went wrong. [GET CUSTOMER DATA]");
-        }
-      }
-    }
-  };
 }

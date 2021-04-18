@@ -8,7 +8,7 @@ checkBox.addEventListener("change", function (e) {
   }
 });
 
-let current = login;
+let current = localStorage.getItem("isLogin");
 
 var xh = new XMLHttpRequest();
 let cr = "";
@@ -17,7 +17,7 @@ if (current != "guest") {
   //Posting to local server
   var url_query = "http://localhost:8080/v1/res/gcust/" + current;
 
-  xh.open("GET", url_query, true);
+  xh.open("POST", url_query, true);
   xh.setRequestHeader("Content-type", "application/json");
   xh.send();
 
@@ -40,6 +40,8 @@ if (current != "guest") {
         document.querySelector(".reservation-time-holder").innerHTML =
           "With the time at " + temp.Reservationtime + ".";
         cr = temp.ReservationID;
+      } else {
+        console.log(this.response);
       }
     }
   };

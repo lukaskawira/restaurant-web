@@ -383,8 +383,7 @@ input[type="radio"]:checked ~ #table_and_chair_hover {
   font-weight: 500;
 }
 
-#date_guest,
-#time_guest {
+#date_guest {
   box-sizing: border-box;
   border: none;
   width: 60%;
@@ -402,8 +401,7 @@ input[type="radio"]:checked ~ #table_and_chair_hover {
   box-shadow: 0px 1px 0px #946e59;
 }
 
-#date_guest:focus,
-#time_guest:focus {
+#date_guest:focus {
   outline: none;
 }
 
