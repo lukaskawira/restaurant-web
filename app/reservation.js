@@ -107,6 +107,7 @@ function checkLogin() {
 }
 
 checkLogin();
+
 let reserveBtn = document.getElementById("reserve_button");
 reserveBtn.addEventListener("click", (e) => {
   e.preventDefault();
