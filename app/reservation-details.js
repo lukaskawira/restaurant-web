@@ -50,9 +50,27 @@ if (current != "guest") {
 let cancelBtn = document.querySelector(".cancel-reservation");
 
 cancelBtn.addEventListener("click", (e) => {
+  Swal.fire({
+    title: "Cancel your reservation?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#ff6961",
+    cancelButtonColor: "#946e59",
+    confirmButtonText: "Cancel My Reservation",
+    cancelButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      cancelReservation();
+      Swal.fire("Canceled!", "Your reservation has been canceled.", "success");
+    }
+  });
+});
+
+function cancelReservation() {
   var url_query = "http://localhost:8080/v1/res/" + cr;
 
-  xh.open("DELETE", url_query, true);
+  xh.open("POST", url_query, true);
   xh.setRequestHeader("Content-type", "application/json");
   xh.send();
 
@@ -67,4 +85,4 @@ cancelBtn.addEventListener("click", (e) => {
       }
     }
   };
-});
+}

@@ -37,7 +37,6 @@ loginBtn.addEventListener("click", (e) => {
 
       //Make JSON data
       var data = JSON.stringify(obj, null, 2);
-      console.log(data);
 
       //Posting to local server
       var xh = new XMLHttpRequest();
@@ -50,15 +49,21 @@ loginBtn.addEventListener("click", (e) => {
       xh.onreadystatechange = function () {
         if (this.readyState === 4) {
           if (this.status === 200) {
-            window.location.href = "index.html";
             localStorage.setItem("isLogin", email);
-            alert("Login Successful!");
+            Swal.fire({
+              icon: "success",
+              title: "Login Successful",
+              text: "You are logged in",
+              confirmButtonText: `OK`,
+            }).then((result) => {
+              window.location.href = "index.html";
+            });
           } else {
-            if (this.responseTest != "") {
-              alert("Invalid password/email");
-            } else {
-              alert(this.responseText);
-            }
+            Swal.fire({
+              icon: "error",
+              title: "Login Denied",
+              text: "Email/Password is invalid",
+            });
           }
         }
       };

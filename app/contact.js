@@ -18,8 +18,40 @@ function validateEmail(mail) {
   return false;
 }
 
-let sendBtn = document.getElementById("submit_btn");
+let current = localStorage.getItem("isLogin");
 
+function checklogin() {
+  if (current != "") {
+    var xh = new XMLHttpRequest();
+    var url_query = "http://localhost:8080/v1/cus/" + current;
+
+    xh.open("GET", url_query, true);
+    xh.setRequestHeader("Content-type", "application/json");
+    xh.send();
+
+    xh.onreadystatechange = function () {
+      if (this.readyState === 4) {
+        if (this.status === 200) {
+          var holder = JSON.parse(this.response);
+          if (holder != "") {
+            //Assign customer data to contact form
+            document.querySelector("#first_name").value = holder.Firstname;
+            document.querySelector("#last_name").value = holder.Lastname;
+            document.querySelector("#input_email").value = holder.Email;
+            document.querySelector("#contact_number_input").value =
+              holder.Phonenumber;
+          } else {
+            console.error("Oops, something went wrong. [GET CUSTOMER DATA]");
+          }
+        }
+      }
+    };
+  }
+}
+
+checklogin();
+
+let sendBtn = document.getElementById("submit_btn");
 sendBtn.addEventListener("click", (e) => {
   try {
     var firstname = document.getElementById("first_name").value;
@@ -49,14 +81,34 @@ sendBtn.addEventListener("click", (e) => {
       xh.onreadystatechange = function () {
         if (this.readyState === 4) {
           if (this.status === 200) {
-            console.log(this.response);
+            //Success alert
+            Swal.fire({
+              icon: "success",
+              title: "Thank you!",
+              text: "Your response has been recorded",
+            }).then((e) => {
+              location.reload();
+            });
           } else {
-            console.log(this.response);
+            //Error alert
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              footer: this.response,
+            }).then((e) => {
+              location.reload();
+            });
           }
         }
       };
     }
   } catch (err) {
-    console.error(err);
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+      footer: err,
+    });
   }
 });

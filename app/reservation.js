@@ -90,12 +90,16 @@ function checkLogin() {
     xh.onreadystatechange = function () {
       if (this.readyState === 4) {
         if (this.status === 200) {
-          holder = JSON.parse(this.response);
-          if (holder.CustomerID == current) {
-            window.location.href = "reservation-details.html";
-          } else {
-            console.error("Oops, something went wrong.");
+          if (this.reponse != "") {
+            holder = JSON.parse(this.response);
+            if (holder.CustomerID == current) {
+              window.location.href = "reservation-details.html";
+            } else {
+              console.error("Oops, something went wrong.");
+            }
           }
+        } else {
+          console.log("Timeout");
         }
       }
     };
@@ -173,7 +177,6 @@ function InsertReservation() {
 
       // Make JSON
       data = JSON.stringify(obj, null, 2);
-      console.log(data);
 
       //Initialize http connection
       var xh = new XMLHttpRequest();
@@ -188,8 +191,14 @@ function InsertReservation() {
       xh.onreadystatechange = function () {
         if (this.readyState === 4) {
           if (this.status === 200) {
-            alert("Reservation Successfully Added!");
-            window.location.href = "reservation-details.html";
+            Swal.fire({
+              icon: "success",
+              title: "Reservation is successful",
+              text: "Thank you, we have received your reservation!",
+              confirmButtonText: `NEXT`,
+            }).then((result) => {
+              window.location.href = "reservation-details.html";
+            });
           } else {
             alert(this.responseText);
           }
