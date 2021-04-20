@@ -1,4 +1,6 @@
 var guest = document.getElementById("guest_login");
+var loginBtn = document.querySelector(".sign-in-btn");
+
 guest.onclick = guestLogin;
 
 function guestLogin() {
@@ -19,8 +21,6 @@ function validateEmail(mail) {
   errEmail.style.display = "initial";
   return false;
 }
-
-var loginBtn = document.querySelector(".sign-in-btn");
 
 loginBtn.addEventListener("click", (e) => {
   e.preventDefault();

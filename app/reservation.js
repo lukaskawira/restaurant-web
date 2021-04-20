@@ -1,19 +1,26 @@
 let checkBox = document.querySelector(".toogle");
+let reserveBtn = document.getElementById("reserve_button");
+let tableNumber = null;
 
-checkBox.addEventListener("change", function (e) {
-  if (this.checked) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-  }
-});
+//Get reservation id if any
+let currentReservationID = localStorage.setItem("currentReservationID", null);
 
+//Get current customer reservation, if customer already have a
+//reservation, the customer must cancel the current reservation
+//and proceed with the new reservation
+var current = localStorage.getItem("isLogin");
+var data = "";
+var holder = "";
+
+/* Validator functions */
+//numberonly function is called by the phonenumber element in from the inner html
 function numberonly(event) {
   var num = event.which ? event.which : event.keyCode;
   if (num > 31 && (num < 48 || num > 57)) return false;
   return true;
 }
 
+//validateEmail will be called when parsing the user input into JSON object
 function validateEmail(i) {
   if (
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
@@ -21,29 +28,29 @@ function validateEmail(i) {
       i
     )
   ) {
-    //errEmail.style.display = "none";
     return true;
   }
-
-  //errEmail.style.display = "initial";
   return false;
 }
 
-let tableNumber = null;
-
+//return_id function is called to return the table number when clicked by the user,
+//this function is called within each grid element in the inner html
 function return_id(id) {
   try {
+    //This piece of code disabled the overlay that is blocking the reservation form input
+    //which forced the user to select a table first before inputting reservation details
     var overlay = document.getElementById("rights_top");
     overlay.style.display = "none";
 
     document.getElementById("tablenumber_id").innerHTML = `Table ${id}`;
-
     tableNumber = id;
   } catch (err) {
     console.error(err);
   }
 }
 
+//setCalendar set the reservation details calendar with restriction that
+//the user cannot select any past date from the date today
 function setCalendar() {
   var today = new Date();
 
@@ -58,30 +65,16 @@ function setCalendar() {
     mm = "0" + mm;
   }
 
-  today = yyyy + "-" + mm + "-" + dd;
-  document.getElementById("date_guest").setAttribute("min", today);
+  today = yyyy + "-" + mm + "-" + dd; //today's format is YYYY-MM-DD
+  document.getElementById("date_guest").setAttribute("min", today); //Set minimal date as today
 }
 
-setCalendar();
-
-var data = "";
-
-//Get current customer reservation, if customer already have a
-//reservation, the customer must cancel the current reservation
-//and proceed with the new reservation
-var current = localStorage.getItem("isLogin");
-
-//Get reservation id if any
-let currentReservationID = localStorage.setItem("currentReservationID", null);
-var holder = "";
-
-//If login is not empty
+//Check current logged in user
 function checkLogin() {
   if (current != "") {
     //Initialize http connection
     var xh = new XMLHttpRequest();
 
-    //First check if the current customer have reservation on hold
     var url_query = "http://localhost:8080/v1/res/gcust/" + current;
     xh.open("POST", url_query, true);
     xh.setRequestHeader("Content-type", "application/json");
@@ -91,6 +84,8 @@ function checkLogin() {
       if (this.readyState === 4) {
         if (this.status === 200) {
           if (this.reponse != "") {
+            //This logic below is to get any reservationID that the customer have
+            //when the customer already have a reservation and is still on HOLD
             holder = JSON.parse(this.response);
             if (holder.CustomerID == current) {
               window.location.href = "reservation-details.html";
@@ -110,14 +105,8 @@ function checkLogin() {
   }
 }
 
-checkLogin();
-
-let reserveBtn = document.getElementById("reserve_button");
-reserveBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  InsertReservation();
-});
-
+//This function auto fill the first name, phone number, and email
+//in the reservation details form
 function getFormValue() {
   var xh = new XMLHttpRequest();
   var url_query = "http://localhost:8080/v1/cus/" + current;
@@ -131,9 +120,7 @@ function getFormValue() {
       if (this.status === 200) {
         var holder = JSON.parse(this.response);
         if (holder != "") {
-          //Else customer doesn't have any reservation on hold,
-          //get and fill the inner html with customer data
-          //Get data from server with reference to customer id and get customer information
+          //Get data from server with reference to customer id (current variable) and get customer information
           document.querySelector("#name_guest").value = holder.Firstname;
           document.querySelector("#phone_guest").value = holder.Phonenumber;
           document.querySelector("#email_guest").value = holder.Email;
@@ -145,6 +132,7 @@ function getFormValue() {
   };
 }
 
+//This function inserts the reservation into the database
 function InsertReservation() {
   try {
     let gname = document.getElementById("name_guest").value;
@@ -209,3 +197,20 @@ function InsertReservation() {
     console.error(err);
   }
 }
+
+checkLogin();
+
+setCalendar();
+
+checkBox.addEventListener("change", function (e) {
+  if (this.checked) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+});
+
+reserveBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  InsertReservation();
+});

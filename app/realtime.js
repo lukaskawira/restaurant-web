@@ -1,9 +1,23 @@
-var rt = document.querySelector("#date_guest");
-var tn = document.querySelector(".grid-container");
-var container = "";
+//Load selection option
+let opt1 = document.getElementById("restime1");
+let opt2 = document.getElementById("restime2");
+let opt3 = document.getElementById("restime3");
+let opt4 = document.getElementById("restime4");
+let opt5 = document.getElementById("restime5");
+let opt6 = document.getElementById("restime6");
+let opt7 = document.getElementById("restime7");
+let opt8 = document.getElementById("restime8");
+let opt9 = document.getElementById("restime9");
+let opt10 = document.getElementById("restime10");
+let opt11 = document.getElementById("restime11");
+let opt12 = document.getElementById("restime12");
 
 //Create an array to store reservation value that was passed by server
 var timearr = [];
+var container = "";
+
+var rt = document.querySelector("#date_guest");
+var tn = document.querySelector(".grid-container");
 
 function createandpost() {
   //Reset edited options
@@ -49,20 +63,6 @@ function createandpost() {
     };
   }
 }
-
-//Load selection option
-let opt1 = document.getElementById("restime1");
-let opt2 = document.getElementById("restime2");
-let opt3 = document.getElementById("restime3");
-let opt4 = document.getElementById("restime4");
-let opt5 = document.getElementById("restime5");
-let opt6 = document.getElementById("restime6");
-let opt7 = document.getElementById("restime7");
-let opt8 = document.getElementById("restime8");
-let opt9 = document.getElementById("restime9");
-let opt10 = document.getElementById("restime10");
-let opt11 = document.getElementById("restime11");
-let opt12 = document.getElementById("restime12");
 
 function updatereservationtime() {
   //Update booked time based on JSON responsed by the server

@@ -1,3 +1,5 @@
+let sendBtn = document.getElementById("create-acc-btn");
+
 // a function to force that only number
 // can be inserted into the phone number field
 function numberonly(event) {
@@ -28,8 +30,6 @@ function confirmPassword(x, y) {
     errPassword.style.display = "initial";
   }
 }
-
-let sendBtn = document.getElementById("create-acc-btn");
 
 sendBtn.addEventListener("click", (e) => {
   e.preventDefault();

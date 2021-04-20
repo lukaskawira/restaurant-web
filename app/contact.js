@@ -1,3 +1,6 @@
+let current = localStorage.getItem("isLogin");
+let sendBtn = document.getElementById("submit_btn");
+
 function numberonly(event) {
   var num = event.which ? event.which : event.keyCode;
   if (num > 31 && (num < 48 || num > 57)) return false;
@@ -17,8 +20,6 @@ function validateEmail(mail) {
   errEmail.style.display = "initial";
   return false;
 }
-
-let current = localStorage.getItem("isLogin");
 
 function checklogin() {
   if (current != "") {
@@ -51,7 +52,6 @@ function checklogin() {
 
 checklogin();
 
-let sendBtn = document.getElementById("submit_btn");
 sendBtn.addEventListener("click", (e) => {
   try {
     var firstname = document.getElementById("first_name").value;
