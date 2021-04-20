@@ -31,6 +31,11 @@ function getActiveUser(login) {
   });
 }
 
+function comingSoon() {
+  var deliveryLink = document.querySelector("#delivery_link");
+  deliveryLink.href = "./soon.html";
+}
+
 function logOut() {
   var u = login;
 
@@ -57,3 +62,5 @@ function logOut() {
     console.log(err);
   }
 }
+
+comingSoon();

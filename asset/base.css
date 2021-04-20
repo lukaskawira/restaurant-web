@@ -122,7 +122,7 @@ main {
   height: 72.5vh;
 }
 
-.error-message {
+.soon-message {
   background-color: rgba(173, 160, 154, 0.1);
   border: 1px dashed rgba(173, 160, 154, 0.25);
   border-radius: 10px;

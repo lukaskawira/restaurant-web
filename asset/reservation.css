@@ -375,22 +375,23 @@ input[type="radio"]:checked ~ #table_and_chair_hover {
   box-sizing: border-box;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #946e59;
   background-color: #e7e4e3;
   text-align: center;
   padding: 5px;
   font-size: 15px;
   font-weight: 500;
+  transition: all ease-in-out 0.2s;
 }
 
 #date_guest {
+  font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
   border: none;
   width: 60%;
-  background-color: #e7e4e3;
-  padding: 5px;
-  font-size: 15px;
-  font-weight: 500;
+  background-color: transparent;
+  margin: 5px;
+  font-size: 14px;
+  transition: all ease-in-out 0.2s;
 }
 
 #number_pax:focus,
@@ -398,11 +399,23 @@ input[type="radio"]:checked ~ #table_and_chair_hover {
 #phone_guest:focus,
 #email_guest:focus {
   outline: none;
-  box-shadow: 0px 1px 0px #946e59;
+}
+
+#number_pax:hover,
+#name_guest:hover,
+#phone_guest:hover,
+#email_guest:hover {
+  transform: translate(0, -1px);
+  box-shadow: 0px 1.5px 0px #946e59;
 }
 
 #date_guest:focus {
   outline: none;
+}
+
+#date_guest:hover {
+  transform: translate(0, -1px);
+  box-shadow: 0px 1.5px 0px #333333;
 }
 
 #reserve_button {
@@ -420,6 +433,20 @@ input[type="radio"]:checked ~ #table_and_chair_hover {
 #reserve_button:hover {
   transform: translate(0, -1px);
   box-shadow: 0px 3px 0px #946e59;
+}
+
+#timepicker {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  margin-top: 5px;
+  transition: all ease-in-out 0.2s;
+}
+
+#timepicker:hover {
+  transform: translate(0, -1px);
+  box-shadow: 0px 1.5px 0px #333333;
 }
 
 @media (max-width: 1200px) {
