@@ -40,7 +40,7 @@ loginBtn.addEventListener("click", (e) => {
 
       //Posting to local server
       var xh = new XMLHttpRequest();
-      var url_query = "http://localhost:8080/v1/cus/login";
+      var url_query = "http://localhost:8080/v1/cus/login/";
 
       xh.open("POST", url_query, true);
       xh.setRequestHeader("Content-type", "application/json");
@@ -51,10 +51,14 @@ loginBtn.addEventListener("click", (e) => {
           if (this.status === 200) {
             localStorage.setItem("isLogin", email);
             Swal.fire({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 1500,
+              timeProgressBar: true,
               icon: "success",
               title: "Login Successful",
               text: "You are logged in",
-              confirmButtonText: `OK`,
             }).then((result) => {
               window.location.href = "index.html";
             });
@@ -65,6 +69,12 @@ loginBtn.addEventListener("click", (e) => {
               text: "Email/Password is invalid",
             });
           }
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Something Wrong",
+            text: "Server is currently unresponsive",
+          });
         }
       };
     }

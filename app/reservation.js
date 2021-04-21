@@ -188,10 +188,22 @@ function InsertReservation() {
               window.location.href = "reservation-details.html";
             });
           } else {
-            alert(this.responseText);
+            Swal.fire({
+              icon: "error",
+              title: "Something Wrong",
+              text: "Unfortunately, your reservation cannot be processed",
+              confirmButtonText: `OK`,
+            });
           }
         }
       };
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Reservation not submitted",
+        text: "Some of the information regarding the reservation is missing",
+        confirmButtonText: `CHECK`,
+      });
     }
   } catch (err) {
     console.error(err);

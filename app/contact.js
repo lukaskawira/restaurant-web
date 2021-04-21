@@ -60,48 +60,64 @@ sendBtn.addEventListener("click", (e) => {
     var phonenumber = document.getElementById("contact_number_input").value;
     var msg = document.getElementById("message_box_input").value;
 
-    if (validateEmail(email)) {
-      var obj = {
-        Firstname: firstname,
-        Lastname: lastname,
-        Email: email,
-        Phonenumber: phonenumber,
-        Message: msg,
-      };
+    if (
+      firstname != "" &&
+      lastname != "" &&
+      email != "" &&
+      phonenumber != "" &&
+      msg != ""
+    ) {
+      if (validateEmail(email)) {
+        var obj = {
+          Firstname: firstname,
+          Lastname: lastname,
+          Email: email,
+          Phonenumber: phonenumber,
+          Message: msg,
+        };
 
-      // Make JSON
-      var data = JSON.stringify(obj, null, 2);
-      var xh = new XMLHttpRequest();
-      var url_query = "http://localhost:8080/v1/con/";
+        // Make JSON
+        var data = JSON.stringify(obj, null, 2);
+        var xh = new XMLHttpRequest();
+        var url_query = "http://localhost:8080/v1/con/";
 
-      xh.open("POST", url_query, true);
-      xh.setRequestHeader("Content-type", "application/json");
-      xh.send(data);
+        xh.open("POST", url_query, true);
+        xh.setRequestHeader("Content-type", "application/json");
+        xh.send(data);
 
-      xh.onreadystatechange = function () {
-        if (this.readyState === 4) {
-          if (this.status === 200) {
-            //Success alert
-            Swal.fire({
-              icon: "success",
-              title: "Thank you!",
-              text: "Your response has been recorded",
-            }).then((e) => {
-              location.reload();
-            });
-          } else {
-            //Error alert
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Something went wrong!",
-              footer: this.response,
-            }).then((e) => {
-              location.reload();
-            });
+        xh.onreadystatechange = function () {
+          if (this.readyState === 4) {
+            if (this.status === 200) {
+              //Success alert
+              Swal.fire({
+                icon: "success",
+                title: "Thank you!",
+                text: "Your response has been recorded",
+              }).then((e) => {
+                location.reload();
+              });
+            } else {
+              //Error alert
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: this.response,
+                showConfirmButton: false,
+              }).then((e) => {
+                location.reload();
+              });
+            }
           }
-        }
-      };
+        };
+      }
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Missing fields",
+        text: "Some important details are missing...",
+        showConfirmButton: false,
+      });
     }
   } catch (err) {
     Swal.fire({
@@ -109,6 +125,7 @@ sendBtn.addEventListener("click", (e) => {
       title: "Oops...",
       text: "Something went wrong!",
       footer: err,
+      showConfirmButton: false,
     });
   }
 });

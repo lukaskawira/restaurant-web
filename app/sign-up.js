@@ -67,8 +67,14 @@ sendBtn.addEventListener("click", (e) => {
         xh.onreadystatechange = function () {
           if (this.readyState === 4) {
             if (this.status === 200) {
-              window.location.href = "sign-in.html";
-              alert("Registration Successful!");
+              Swal.fire({
+                icon: "success",
+                title: "Register Successful",
+                text: "You have been registered",
+                confirmButtonText: `OK`,
+              }).then((result) => {
+                window.location.href = "index.html";
+              });
             } else {
               alert(this.responseText);
             }
