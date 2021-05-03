@@ -42,45 +42,75 @@ sendBtn.addEventListener("click", (e) => {
     var cpassword = document.getElementById("confirm-password").value;
     var phonenumber = document.getElementById("input-phone-number").value;
 
-    if (validateEmail(email)) {
-      if (confirmPassword(password, cpassword)) {
-        var obj = {
-          FirstName: firstname,
-          LastName: lastname,
-          Password: password,
-          Email: email,
-          PhoneNumber: phonenumber,
-        };
+    if (
+      firstname != "" &&
+      lastname != "" &&
+      email != "" &&
+      password != "" &&
+      cpassword != "" &&
+      phonenumber != ""
+    ) {
+      if (validateEmail(email)) {
+        if (confirmPassword(password, cpassword)) {
+          var obj = {
+            FirstName: firstname,
+            LastName: lastname,
+            Password: password,
+            Email: email,
+            PhoneNumber: phonenumber,
+          };
 
-        // Make JSON
-        var data = JSON.stringify(obj, null, 2);
-        console.log(data);
+          // Make JSON
+          var data = JSON.stringify(obj, null, 2);
+          console.log(data);
 
-        //Posting to local server
-        var xh = new XMLHttpRequest();
-        var url_query = "http://localhost:8080/v1/cus";
+          //Posting to local server
+          var xh = new XMLHttpRequest();
+          var url_query = "http://localhost:8080/v1/cus";
 
-        xh.open("POST", url_query, true);
-        xh.setRequestHeader("Content-type", "application/json");
-        xh.send(data);
+          xh.open("POST", url_query, true);
+          xh.setRequestHeader("Content-type", "application/json");
+          xh.send(data);
 
-        xh.onreadystatechange = function () {
-          if (this.readyState === 4) {
-            if (this.status === 200) {
-              Swal.fire({
-                icon: "success",
-                title: "Register Successful",
-                text: "You have been registered",
-                confirmButtonText: `OK`,
-              }).then((result) => {
-                window.location.href = "index.html";
-              });
-            } else {
-              alert(this.responseText);
+          xh.onreadystatechange = function () {
+            if (this.readyState === 4) {
+              if (this.status === 200) {
+                Swal.fire({
+                  icon: "success",
+                  title: "Register Successful",
+                  text: "You have been registered",
+                  confirmButtonText: `OK`,
+                }).then((result) => {
+                  window.location.href = "index.html";
+                });
+              } else {
+                alert(this.responseText);
+              }
             }
-          }
-        };
+          };
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Password missmatch",
+            text: "Password(s) doesn't match",
+            confirmButtonText: `CHECK`,
+          });
+        }
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Email",
+          text: "Email format is invalid",
+          confirmButtonText: `TRY AGAIN`,
+        });
       }
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Registration not submitted",
+        text: "Some of the informations are missing",
+        confirmButtonText: `CHECK`,
+      });
     }
   } catch (err) {
     console.error(err);

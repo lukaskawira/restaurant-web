@@ -57,11 +57,11 @@ function cancelReservation() {
   xh.onreadystatechange = function () {
     if (this.readyState === 4) {
       if (this.status === 200) {
-        Swal.fire(
-          "Canceled!",
-          "Your reservation has been canceled.",
-          "success"
-        );
+        Swal.fire({
+          title: "Canceled!",
+          text: "Your reservation has been canceled.",
+          icon: "success",
+        });
         localStorage.removeItem("currentReservationID");
         window.location.href = "reservation.html";
       } else {
