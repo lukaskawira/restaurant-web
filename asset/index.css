@@ -52,7 +52,7 @@ button.login {
 }
 
 .nav-links,
-.hamburger-nav>div>div {
+.hamburger-nav > div > div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +113,7 @@ footer {
 }
 
 .hamburger-nav,
-.hamburger-nav>div {
+.hamburger-nav > div {
   display: none;
 }
 
@@ -158,19 +158,19 @@ footer {
   top: 5px;
 }
 
-.toogle:checked+.hamburger .burger-lines::before {
+.toogle:checked + .hamburger .burger-lines::before {
   top: 0;
   transform-origin: center;
   transform: rotate(35deg);
 }
 
-.toogle:checked+.hamburger .burger-lines::after {
+.toogle:checked + .hamburger .burger-lines::after {
   top: 0;
   transform-origin: center;
   transform: rotate(-35deg);
 }
 
-.toogle:checked:hover+.burger-lines {
+.toogle:checked:hover + .burger-lines {
   transform: rotate(225deg);
 }
 
@@ -187,7 +187,7 @@ footer {
   justify-content: center;
 }
 
-.hamburger-nav>div {
+.hamburger-nav > div {
   background: #292929;
   border-radius: 50%;
   width: 300vh;
@@ -200,27 +200,27 @@ footer {
   transition: all 0.4s ease;
 }
 
-.hamburger-nav>div>div,
+.hamburger-nav > div > div,
 .nav-links {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
-.nav-links>li {
+.nav-links > li {
   margin-bottom: 40px;
 }
 
-.nav-links>li>a {
+.nav-links > li > a {
   font-size: 25px;
   font-weight: 600;
 }
 
-.toogle:checked~.hamburger-nav {
+.toogle:checked ~ .hamburger-nav {
   visibility: visible;
 }
 
-.toogle:checked~.hamburger-nav>div {
+.toogle:checked ~ .hamburger-nav > div {
   transform: scale(1);
   transition-duration: 0.4s;
 }
